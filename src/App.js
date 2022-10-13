@@ -10,6 +10,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import SignIn from './components/SignIn';
 import SignOut from './components/SignOut';
+import Header from './components/Header';
 
 firebase.initializeApp({
   apiKey: "AIzaSyAx6OVILzA4kZruPLdPKACsftePjm9kv8I",
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Header />
         {user ? <SignOut auth={ auth }/> : <SignIn auth={ auth } /> }
       </header>
     </div>
