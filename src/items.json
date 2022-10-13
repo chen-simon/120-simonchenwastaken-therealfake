@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Beef Soup",
+    "price": 12.99,
+    "image": "items/beef_soup.png"
+  },
+  {
+    "name": "Bento Box",
+    "price": 15.99,
+    "image": "items/bento_box.png"
+  }
+]
