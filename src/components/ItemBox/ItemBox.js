@@ -4,7 +4,8 @@ const ItemBox = (props) => {
   const cartRef = props.firestore.collection('carts');
 
   const addToCart = async () => {
-    if (props.cart == null) {
+    // if a cart doesn't already exist, create one
+    if (props.cart.docs.length === 0) {
       await cartRef.add({
         uid: props.user.uid,
         items: [
@@ -20,18 +21,27 @@ const ItemBox = (props) => {
       return;
     }
 
-    const newCart = props.cart;
+    // otherwise, update the cart
+    let newCart = props.cart.docs[0].data();
+    let quantityChanged = false;
     newCart.items.forEach(cartItem => {
       if (cartItem.name === props.item.name) {
         cartItem.quantity++;
+        quantityChanged = true;
       }
     });
-    await cartRef.add({
-      uid: props.user.uid,
-      items: newCart.items,
-      createdAt: props.firebase.firestore.FieldValue.serverTimestamp()
-    })
+    if (!quantityChanged) {
+      newCart.items.push({
+        name: props.item.name,
+        price: props.item.price,
+        image: props.item.image,
+        quantity: 1
+      })
+    }
+
+    await cartRef.doc(props.cart.docs[0].id).update(newCart);
   };
+
 
   return (
     <div class="itemBox">
