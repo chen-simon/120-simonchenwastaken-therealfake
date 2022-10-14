@@ -20,15 +20,15 @@ const ItemBox = (props) => {
       return;
     }
 
-    const newCart = props.cart;
-    newCart.forEach(cartItem => {
+    const newCart = props.cart[0];
+    newCart.items.forEach(cartItem => {
       if (cartItem.name === props.item.name) {
         cartItem.quantity++;
       }
     });
     await cartRef.add({
       uid: props.user.uid,
-      items: newCart,
+      items: newCart.items,
       createdAt: props.firebase.firestore.FieldValue.serverTimestamp()
     })
   };

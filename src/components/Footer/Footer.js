@@ -1,6 +1,5 @@
 import './Footer.scss';
 import CartItemBox from '../CartItemBox/CartItemBox';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const Footer = (props) => {
     return (

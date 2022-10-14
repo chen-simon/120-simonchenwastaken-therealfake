@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect,useRef } from 'react';
 
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -10,12 +10,19 @@ import Footer from '../Footer/Footer';
 
 import itemList from '../../items.json';
 
-function Store(props) {
+const Store = (props) => {
   
   // Firestore hook to get cart
   const cartRef = props.firestore.collection('carts');
-  const query = cartRef.orderBy('createdAt').where('uid' ,'==', props.user.uid).limit(1);
-  const [cart] = useCollectionData(query, {idField: 'id'});
+  const query = cartRef.where('uid' ,'==', props.user.uid);
+  const [cartHistory] = useCollectionData(query, {idField: 'id'});
+
+  // The most recent version of the cart
+  let cart = [];
+
+  useEffect(() => {
+    console.log(cartHistory);
+  }, [cartHistory]);
 
   return (
     <>
@@ -27,7 +34,11 @@ function Store(props) {
                                     user={ props.user } 
                                     cart={ cart } />) }
       </div>
-      {props.user && <Footer user={ cart } firestore={ props.firestore }/>}
+      { props.user && <Footer 
+                        firestore={ props.firestore } 
+                        firebase={ props.firebase }
+                        user={ props.user } 
+                        cart={ cart }/> }
     </>
   );
 }
