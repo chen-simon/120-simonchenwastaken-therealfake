@@ -2,6 +2,14 @@ import './Footer.scss';
 import CartItemBox from '../CartItemBox/CartItemBox';
 
 const Footer = (props) => {
+    let subtotal = 0.00;
+    let tax = 0.00;
+    let grandtotal = 0.00;
+    if (props.cart?.docs && props.cart.docs.length > 0 ){
+      subtotal = props.cart.docs[0].data().items.reduce((accum,item) => accum + item.price *item.quantity, 0);
+      tax = subtotal * 0.13;
+      grandtotal = subtotal + tax;
+    }
     return (
       <div id="footer">
         <div>Your Cart</div>
@@ -16,9 +24,9 @@ const Footer = (props) => {
               cart={ props.cart }/> ) }
         </div>
         <div id="totals">
-          <div>Subtotal: </div>
-          <div>Tax: </div>
-          <div>Grand Total: </div>
+          <div>Subtotal: ${subtotal.toFixed(2)}</div>
+          <div>Tax: ${tax.toFixed(2)}</div>
+          <div>Grand Total: ${grandtotal.toFixed(2)}</div>
           
         </div>
       </div>

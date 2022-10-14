@@ -9,6 +9,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Store from './components/Store/Store'
 import Header from './components/Header/Header';
+import InitialPage from './components/InitialPage/InitialPage';
 
 firebase.initializeApp({
   apiKey: "AIzaSyAx6OVILzA4kZruPLdPKACsftePjm9kv8I",
@@ -31,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <Header user={ user } auth={ auth }/>
-      {user && <Store user={ user } firestore={ firestore } firebase={ firebase }/>}
+      {user ? <Store user={ user } firestore={ firestore } firebase={ firebase }/> : <InitialPage />}
     </div>
   );
 }
