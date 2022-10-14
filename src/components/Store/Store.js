@@ -4,6 +4,7 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 import ItemBox from '../ItemBox/ItemBox';
 import Footer from '../Footer/Footer';
@@ -18,11 +19,26 @@ const Store = (props) => {
   const [cartHistory] = useCollectionData(query, {idField: 'id'});
 
   // The most recent version of the cart
-  let cart = [];
+  let cart = useRef(null);
 
   useEffect(() => {
-    console.log(cartHistory);
-  }, [cartHistory]);
+    if (!cartHistory) {
+        return;
+    }
+
+    let mostRecentCart = cartHistory[0];
+    cartHistory.forEach(cartVersion => {
+        if (cartVersion.createdAt?.seconds > mostRecentCart.createdAt?.seconds) {
+            mostRecentCart = cartVersion;
+        }
+        else if (cartVersion.createdAt?.seconds === mostRecentCart.createdAt?.seconds) {
+            if (cartVersion.createdAt?.nanoseconds > mostRecentCart.createdAt?.nanoseconds) {
+                mostRecentCart = cartVersion;
+            }
+        }
+    })
+    cart.current = mostRecentCart;
+    }, [cartHistory]);
 
   return (
     <>
@@ -32,13 +48,13 @@ const Store = (props) => {
                                     firestore={ props.firestore } 
                                     firebase={ props.firebase }
                                     user={ props.user } 
-                                    cart={ cart } />) }
+                                    cart={ cart.current } />) }
       </div>
       { props.user && <Footer 
                         firestore={ props.firestore } 
                         firebase={ props.firebase }
                         user={ props.user } 
-                        cart={ cart }/> }
+                        cart={ cart.current }/> }
     </>
   );
 }

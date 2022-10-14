@@ -4,7 +4,7 @@ const ItemBox = (props) => {
   const cartRef = props.firestore.collection('carts');
 
   const addToCart = async () => {
-    if (!props.cart) {
+    if (props.cart == null) {
       await cartRef.add({
         uid: props.user.uid,
         items: [
@@ -20,7 +20,7 @@ const ItemBox = (props) => {
       return;
     }
 
-    const newCart = props.cart[0];
+    const newCart = props.cart;
     newCart.items.forEach(cartItem => {
       if (cartItem.name === props.item.name) {
         cartItem.quantity++;

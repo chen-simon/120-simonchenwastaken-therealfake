@@ -6,7 +6,7 @@ const Footer = (props) => {
       <div id="footer">
         <div>Your Cart</div>
         <div id="cart-items">
-          { props.cart && props.cart[0].items.map(item => <CartItemBox item={ item }/>) }
+          { props.cart && props.cart.items && props.cart.items.map(item => <CartItemBox item={ item }/>) }
         </div>
         <div id="totals">
           <div>Subtotal: </div>
