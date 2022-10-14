@@ -9,6 +9,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer'
 import ItemBox from './components/ItemBox/ItemBox';
 
 import itemList from './items.json';
@@ -38,6 +39,7 @@ function App() {
       <div class="mainGrid">
         { itemList.map((item) => <ItemBox item={ item } inventory={ inventory }/>) }
       </div>
+      <Footer />
     </div>
   );
 }

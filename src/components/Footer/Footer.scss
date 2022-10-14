@@ -1,0 +1,18 @@
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 50px;
+    background-color: olivedrab;
+    color: white;
+    padding: 1rem 4rem;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#cart-items {
+    display: flex;
+    gap: 1px;
+}
