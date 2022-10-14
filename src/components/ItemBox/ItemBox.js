@@ -1,8 +1,36 @@
 import './ItemBox.scss';
 
 const ItemBox = (props) => {
-  const AddToCart = () => {
+  const cartRef = props.firestore.collection('carts');
 
+  const addToCart = async () => {
+    if (!props.cart) {
+      await cartRef.add({
+        uid: props.user.uid,
+        items: [
+          {
+            name: props.item.name,
+            price: props.item.price,
+            image: props.item.image,
+            quantity: 1
+          }
+        ],
+        createdAt: props.firebase.firestore.FieldValue.serverTimestamp()
+      });
+      return;
+    }
+
+    const newCart = props.cart;
+    newCart.forEach(cartItem => {
+      if (cartItem.name === props.item.name) {
+        cartItem.quantity++;
+      }
+    });
+    await cartRef.add({
+      uid: props.user.uid,
+      items: newCart,
+      createdAt: props.firebase.firestore.FieldValue.serverTimestamp()
+    })
   };
 
   return (
@@ -18,7 +46,7 @@ const ItemBox = (props) => {
           </div>
         </div>
         <div class="itemAddToCart">
-          <button>Add To Cart</button>
+          <button onClick={ () => { addToCart(props.item) }}>Add To Cart</button>
         </div>
       </div>
     </div>

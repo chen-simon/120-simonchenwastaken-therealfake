@@ -7,11 +7,8 @@ import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+import Store from './components/Store/Store'
 import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer'
-import ItemBox from './components/ItemBox/ItemBox';
-
-import itemList from './items.json';
 
 firebase.initializeApp({
   apiKey: "AIzaSyAx6OVILzA4kZruPLdPKACsftePjm9kv8I",
@@ -34,10 +31,7 @@ function App() {
   return (
     <div className="App">
       <Header user={ user } auth={ auth }/>
-      <div class="mainGrid">
-        { itemList.map((item) => <ItemBox item={ item }/>) }
-      </div>
-      {user && <Footer user={ user } firestore={ firestore }/>}
+      {user && <Store user={ user } firestore={ firestore } firebase={ firebase }/>}
     </div>
   );
 }
