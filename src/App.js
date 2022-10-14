@@ -8,9 +8,10 @@ import 'firebase/compat/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import SignIn from './components/SignIn';
-import SignOut from './components/SignOut';
 import Header from './components/Header';
+import ItemBox from './components/ItemBox';
+
+import itemList from './items.json';
 
 firebase.initializeApp({
   apiKey: "AIzaSyAx6OVILzA4kZruPLdPKACsftePjm9kv8I",
@@ -32,10 +33,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Header />
-        {user ? <SignOut auth={ auth }/> : <SignIn auth={ auth } /> }
-      </header>
+      <Header user={ user } auth={ auth }/>
+      <div class="mainGrid">
+        { itemList.map((item) => <ItemBox item={ item }/>) }
+      </div>
     </div>
   );
 }
