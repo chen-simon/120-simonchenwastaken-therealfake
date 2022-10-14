@@ -6,7 +6,10 @@ const Header = (props) => {
 
   return (
     <div id="header">
-      <div>Oishii Cart</div>
+      <div class="websiteName">
+        <img src="./items/ramen.png" alt="logo"/>
+        Oishii Cart
+      </div>
       {props.user ? <SignOut user={props.user} auth={props.auth}/> : <SignIn auth={props.auth}/>}
     </div>
 

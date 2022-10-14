@@ -30,12 +30,13 @@ const firestore = firebase.firestore();
 function App() {
   
   const [user] = useAuthState(auth);
+  let inventory = [];
 
   return (
     <div className="App">
       <Header user={ user } auth={ auth }/>
       <div class="mainGrid">
-        { itemList.map((item) => <ItemBox item={ item }/>) }
+        { itemList.map((item) => <ItemBox item={ item } inventory={ inventory }/>) }
       </div>
     </div>
   );

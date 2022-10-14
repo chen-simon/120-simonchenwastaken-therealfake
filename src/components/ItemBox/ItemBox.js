@@ -8,17 +8,19 @@ const ItemBox = (props) => {
   return (
     <div class="itemBox">
       <img src={props.item.image} alt={props.item.name} />
-      <div class="itemInfo">
-        <div class="itemName">
-          { props.item.name }
+      <div class="itemBoxFooter">
+        <div class="itemInfo">
+          <div class="itemName">
+            { props.item.name }
+          </div>
+          <div class="itemPrice">
+            ${ props.item.price }
+          </div>
         </div>
-        <div class="itemPrice">
-          { props.item.price }
-        </div>
-      </div>
-      <div class="itemAddToCart">
+        <div class="itemAddToCart">
           <button>Add To Cart</button>
         </div>
+      </div>
     </div>
   );
 }

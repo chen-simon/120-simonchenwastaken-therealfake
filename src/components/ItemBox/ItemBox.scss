@@ -1,31 +1,37 @@
 .itemBox {
     background-color: #eeeeee;
     width: 20rem;
+    height: 20rem;
     margin: 1rem;
     padding: 1rem;
     border-radius: 0.5rem;
-}
 
-img {
-    display: block;
-    margin: auto;
-    width: 80%;
-    margin-bottom: 0.5rem;
-}
+    img {
+        display: block;
+        margin: auto;
+        width: 80%;
+        height: 74%;
+        margin-bottom: 0.5rem;
+    }
 
-.itemInfo {
-    display: flex;
-    margin-bottom: 1rem;
-}
+    .itemInfo {
+        display: flex;
+        margin-bottom: 1rem;
+    }
+    
+    .itemName {
+        font-weight: 700;
+        flex: 1;
+    }
+    
+    .itemAddToCart button {
+        width: 100%;
+        height: 2rem;
+        border: none;
+        background-color: #dddddd;
+    }
 
-.itemName {
-    font-weight: 700;
-    flex: 1;
-}
-
-.itemAddToCart button {
-    width: 100%;
-    height: 2rem;
-    border: none;
-    background-color: #dddddd;
+    button {
+        border-radius: 0.2rem;
+    }
 }

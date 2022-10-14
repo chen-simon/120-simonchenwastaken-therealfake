@@ -1,20 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
+
 #header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 2.5rem;
+  background-color: #b1db5d;
+  color: white;
+  padding: 1rem 0.5rem;
+  font-size: 1rem;
+
+  #user-menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 25px;
-    background-color: olivedrab;
-    color: white;
-    padding: 1rem 0.5rem;
-    font-size: 1rem;
-  
-    #user-menu {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    button {
-      padding: 1.5px 2.5px;
-    }
+    gap: 1rem;
   }
+  
+  button {
+    width: 8rem;
+    border: none;
+    border-radius: 0.3rem;
+  }
+
+  .websiteName {
+    font-family: Fuzzy Bubbles;
+    font-weight: 700;
+    text-align: justify;
+    font-size: 1.8rem;
+  }
+
+  img {
+    height: 2rem;
+  }
+}
   

@@ -8,5 +8,55 @@
     "name": "Bento Box",
     "price": 15.99,
     "image": "items/bento_box.png"
+  },
+  {
+    "name": "Chicken Wings",
+    "price": 8.99,
+    "image": "items/chicken_wings.png"
+  },
+  {
+    "name": "French Fries",
+    "price": 3.99,
+    "image": "items/french_fries.png"
+  },
+  {
+    "name": "Fried Rice",
+    "price": 3.99,
+    "image": "items/fried_rice.png"
+  },
+  {
+    "name": "Pickled Cucumbers",
+    "price": 5.99,
+    "image": "items/pickled_cucumbers.png"
+  },
+  {
+    "name": "Ramen",
+    "price": 12.99,
+    "image": "items/ramen.png"
+  },
+  {
+    "name": "Raw Chicken Sashimi",
+    "price": 16.99,
+    "image": "items/raw_chicken_sashimi.png"
+  },
+  {
+    "name": "Strawberry Icecream",
+    "price": 6.99,
+    "image": "items/strawberry_icecream.png"
+  },
+  {
+    "name": "Sweet Buns",
+    "price": 5.99,
+    "image": "items/sweet_buns.png"
+  },
+  {
+    "name": "Tofu",
+    "price": 4.99,
+    "image": "items/tofu.png"
+  },
+  {
+    "name": "Water Dumplings",
+    "price": 9.99,
+    "image": "items/water_dumplings.png"
   }
 ]
