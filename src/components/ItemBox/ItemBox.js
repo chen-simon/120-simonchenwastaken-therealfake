@@ -1,3 +1,4 @@
+import './ItemBox.scss';
 
 const ItemBox = (props) => {
   const AddToCart = () => {
@@ -7,17 +8,17 @@ const ItemBox = (props) => {
   return (
     <div class="itemBox">
       <img src={props.item.image} alt={props.item.name} />
-      <div>
-        <div>
+      <div class="itemInfo">
+        <div class="itemName">
           { props.item.name }
         </div>
-        <div>
+        <div class="itemPrice">
           { props.item.price }
         </div>
-        <div>
+      </div>
+      <div class="itemAddToCart">
           <button>Add To Cart</button>
         </div>
-      </div>
     </div>
   );
 }
