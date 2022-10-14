@@ -15,4 +15,11 @@ button:hover {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 15rem;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
