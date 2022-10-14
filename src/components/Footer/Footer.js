@@ -1,12 +1,14 @@
 import './Footer.scss';
 import CartItemBox from '../CartItemBox/CartItemBox';
+import getSubtotal from './Subtotal';
+
 
 const Footer = (props) => {
     let subtotal = 0.00;
     let tax = 0.00;
     let grandtotal = 0.00;
     if (props.cart?.docs && props.cart.docs.length > 0 ){
-      subtotal = props.cart.docs[0].data().items.reduce((accum,item) => accum + item.price *item.quantity, 0);
+      subtotal = getSubtotal(props.cart.docs[0].data().items);
       tax = subtotal * 0.13;
       grandtotal = subtotal + tax;
     }
