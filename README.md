@@ -1,5 +1,6 @@
 # 🛒 Super Shopping Cart!
 Simon Chen and Tianji Zhang's CSC301 (Fall 2022) Simple Checkout App for Assignment 2!
+Try it out at: https://supershoppingcart301.web.app/
 
 ### 🔧 Running the development server!
 ```bash
