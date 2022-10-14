@@ -6,7 +6,6 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer'
@@ -31,15 +30,14 @@ const firestore = firebase.firestore();
 function App() {
   
   const [user] = useAuthState(auth);
-  let inventory = [];
 
   return (
     <div className="App">
       <Header user={ user } auth={ auth }/>
       <div class="mainGrid">
-        { itemList.map((item) => <ItemBox item={ item } inventory={ inventory }/>) }
+        { itemList.map((item) => <ItemBox item={ item }/>) }
       </div>
-      <Footer />
+      {user && <Footer user={ user } firestore={ firestore }/>}
     </div>
   );
 }
