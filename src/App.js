@@ -8,8 +8,8 @@ import 'firebase/compat/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import Header from './components/Header';
-import ItemBox from './components/ItemBox';
+import Header from './components/Header/Header';
+import ItemBox from './components/ItemBox/ItemBox';
 
 import itemList from './items.json';
 

@@ -1,5 +1,5 @@
-import SignIn from './SignIn';
-import SignOut from './SignOut';
+import SignIn from '../SignIn/SignIn';
+import SignOut from '../SignOut/SignOut';
 
 const Header = (props) => {
 
